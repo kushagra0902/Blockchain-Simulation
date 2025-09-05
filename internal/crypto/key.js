@@ -23,6 +23,7 @@ function generateKeyPair() {
     const configPath = path.resolve(__dirname, "../../config.json");
     let config = {};
 
+    //used sync method here as we dont want to proceed until we open this file system.  Better method is to add a timeout so if 5 seconds or so me bhi nhi hua then it fails simply.
     if (fs.existsSync(configPath)) { //existSync chekcs if teh file exists or not and if it does, we parse the json in it ans stores it in config 
         config = JSON.parse(fs.readFileSync(configPath, "utf8"));
     }

@@ -7,7 +7,7 @@ function signData(data) {
     const sign=crypto.createSign("SHA256"); // this creates a signature object using the crypto module of node
     sign.update(hash); // we feed in the data we want to sign first. Generally we do not sigbn the whole data but its hash as the hash is of fixed length
     sign.end();
-    signature = sign.sign(PersonalKeys, "hex") // we sign the fucntion using the personal keys which can thus later be verified using the verify function 
+    signature = sign.sign(PersonalKeys.privateKey, "hex") // we sign the fucntion using the personal keys which can thus later be verified using the verify function 
     return signature
 }
 

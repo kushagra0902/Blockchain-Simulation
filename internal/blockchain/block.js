@@ -30,11 +30,13 @@ class BlockFooter {
 }
 
 class Block {
-  cosntructor(header, footer, body) {
-    this.header = header;
-    this.footer = footer;
-    this.body = body;
-    this.SetHeader();
+  cosntructor(transactions,idx,prevHash = null) {
+    this.idx = idx
+    this.header;
+    this.footer;
+    this.body;
+    this.setFooter(prevHash);
+    this.setBody(transactions);
   }
 
   SetHeader() {
@@ -44,14 +46,14 @@ class Block {
       header: {
         timestamp: this.header.timestamp,
         merkelroot: this.header.merkelroot,
-        idx: this.header.idx,
+        idx: this.idx // will be inserted in the block chain itself
       },
       footer: this.footer,
       body: this.body,
     });
     //idx logic yet to be formed
 
-    this.header.id = hashData(blockData)
+    this.header.id = hashData(blockData);
   }
 
   setBody(transactions) {
@@ -64,3 +66,5 @@ class Block {
     this.SetHeader(); // refresh block id after footer update
   }
 }
+
+export {Block}
