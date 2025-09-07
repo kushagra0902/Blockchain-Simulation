@@ -1,7 +1,7 @@
 import { genesisBlock } from "./genesisBlock";
 import { Block } from "./block";
 import { hashData } from "../crypto/hash";
-import { transactions } from "../transaction/transaction";
+import { applyTransaction, transactions } from "../transaction/transaction";
 import { isValidBlock, isValidTransaction } from "./validator";
 
 class BlockChain {
@@ -12,6 +12,7 @@ class BlockChain {
     this.idx++;
     this.genesis = genesisBlock;
     this.pendingTransactions = [];
+    this.balances = {}
   }
 
   CreateNewBlock() {
@@ -48,6 +49,7 @@ class BlockChain {
             (blockTx) => blockTx.id === tx.id // W syntax, innermost callback tells whether is there any trans in block that has same id as the given id. Returns trus if found
           )
       );
+      this.applyBlock(Block);
     }
   }
 
@@ -61,6 +63,14 @@ class BlockChain {
     this.pendingTransactions.push(newTransaction);
     return newTransaction;
   }
+
+  applyBlock(block) {
+    for (let tx of block.body.transactions) {
+      this.balances = applyTransaction(tx, this.balances)
+    }
+  }
+
+ 
 }
 
 //NOW A BANGER: THERE IS NO GLOBAL BLOCKCHAIN. THE ABOVE CLASS IS MAINTAINED BY EACH NODE IN THE NETWORK AND BROADCASTS IT WHENEVER IT GETS UPDATED WITH A BLOCK OR A TRANSACTION. SO BASICALLY THE GLOBAL STATE IS AN ILLUSION OF CONSENSUS AND THE NETWORK MODULE

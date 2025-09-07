@@ -34,7 +34,7 @@ function isValidTransaction(transaction) {
 2)It checks for amount if the sender has enough amount to make the transaction
 */
 
-  let transactionData = json.stringify(
+  let transactionData = JSON.stringify(
     transaction.receiver + transaction.amount
   );
 
