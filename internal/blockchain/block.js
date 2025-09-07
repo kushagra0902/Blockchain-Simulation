@@ -5,7 +5,7 @@ class BlockHeader {
   cosntructor() {
     // exec when the obj of that class is formed automatcially like constructors in any other lang
     this.timestamp = Date.now();
-    this.merkelroot;
+    this.merkelRoot;
     this.idx;
     this.id;
   }
@@ -13,7 +13,7 @@ class BlockHeader {
 
   setMerkelRoot(transactions) {
     const merkelTree = new MerkleTree(transactions);
-    this.merkelroot = merkelTree.MerkleRoot();
+    this.merkelRoot = merkelTree.MerkleRoot();
   }
 }
 
@@ -30,8 +30,8 @@ class BlockFooter {
 }
 
 class Block {
-  cosntructor(transactions,idx,prevHash = null) {
-    this.idx = idx
+  cosntructor(transactions, idx, prevHash = null) {
+    this.idx = idx;
     this.header;
     this.footer;
     this.body;
@@ -45,8 +45,8 @@ class Block {
     const blockData = JSON.stringify({
       header: {
         timestamp: this.header.timestamp,
-        merkelroot: this.header.merkelroot,
-        idx: this.idx // will be inserted in the block chain itself
+        merkelRoot: this.header.merkelRoot,
+        idx: this.idx, // will be inserted in the block chain itself
       },
       footer: this.footer,
       body: this.body,
@@ -67,4 +67,4 @@ class Block {
   }
 }
 
-export {Block}
+export { Block };
