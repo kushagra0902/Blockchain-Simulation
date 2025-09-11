@@ -1,5 +1,5 @@
-import { verifySignature } from "../crypto/signature";
-import { MerkleTree } from "../crypto/merkle";
+import { verifySignature } from "../crypto/signature.js";
+import { MerkleTree } from "../crypto/merkle.js";
 function isValidBlock(block, prevHash) {
   /*
 Logics for verification of the block:

@@ -1,4 +1,4 @@
-import { hashData } from "../crypto/hash";
+import { hashData } from "../crypto/hash.js";
 
 class transactions {
   constructor(sender, receiver, amount) {
@@ -13,8 +13,9 @@ class transactions {
   }
 }
 
-function applyTransaction(tx, balances) {  // changes the balances field of each block and as the whole block chain agrees on to same blocks, each should have the same balance sheet only
-  // Initialize balances if not already set 
+function applyTransaction(tx, balances) {
+  // changes the balances field of each block and as the whole block chain agrees on to same blocks, each should have the same balance sheet only
+  // Initialize balances if not already set
   if (!balances[tx.sender]) balances[tx.sender] = 0;
   if (!balances[tx.receiver]) balances[tx.receiver] = 0;
 
@@ -26,7 +27,7 @@ function applyTransaction(tx, balances) {  // changes the balances field of each
     throw new Error(`Invalid transaction: ${tx.sender} has insufficient funds`);
   }
 
-  return balances
+  return balances;
 }
 
-export { transactions, applyTransaction};
+export { transactions, applyTransaction };

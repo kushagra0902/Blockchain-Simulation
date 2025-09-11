@@ -1,5 +1,5 @@
 import { Block } from "./block";
 
-let genesisBlock = new Block([], 0)
+let genesisBlock = new Block([], 0);
 
-export {genesisBlock}
+export { genesisBlock };

@@ -1,5 +1,5 @@
-import { hashData } from "../crypto/hash";
-import { MerkleTree } from "../crypto/merkle";
+import { hashData } from "../crypto/hash.js";
+import { MerkleTree } from "../crypto/merkle.js";
 
 class BlockHeader {
   cosntructor() {
@@ -26,11 +26,12 @@ class BlockBody {
 class BlockFooter {
   constructor(prevHash) {
     this.prevHash = prevHash;
+    this.nonce;
   }
 }
 
 class Block {
-  cosntructor(transactions, idx, prevHash = null) {
+  cosntructor(transactions, idx = null, prevHash = null) {
     this.idx = idx;
     this.header;
     this.footer;

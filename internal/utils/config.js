@@ -8,5 +8,6 @@ function createEmptyConfig(dirPath) {
     const filePath = path.join(dirPath, 'config.json');
     fs.writeFileSync(filePath, JSON.stringify({}, null, 2), { flag: 'w' });
 }
+let mempoolLocation = ""
 
-export { createEmptyConfig };
+export { createEmptyConfig, mempoolLocation};

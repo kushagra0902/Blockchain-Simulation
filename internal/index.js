@@ -1,12 +1,10 @@
-import express from "express"
+import { app } from "./app";
 
-const app = express()
-const port = process.env.PORT || 3000
+import { BlockChain } from "./blockchain/blockchain.js";
 
-app.get("/", (req, res) => {
-  res.send("Welcome to Blockchain Simulator!")
-})
+let localBCinstance = new BlockChain();
 
 app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`)
-})
+  console.log(`App listening at http://localhost:${port}`);
+});
+export { localBCinstance };
